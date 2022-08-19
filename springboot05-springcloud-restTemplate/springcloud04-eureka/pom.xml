@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>springboot05-springcloud-restTemplate</artifactId>
+        <groupId>com.yama</groupId>
+        <version>1.0.0-RELEASE</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>springcloud04-eureka</artifactId>
+    <packaging>jar</packaging>
+
+    <!--springcloud中的eureka注册中心与zookeeper不同
+    zookeeper需要安装在操作系统上，启动，根据地址和端口进行连接使用
+    eureka只需要创建一个可执行jar包，springboot工程，启动运行即可使用-->
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

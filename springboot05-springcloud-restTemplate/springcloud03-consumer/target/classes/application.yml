@@ -1,0 +1,19 @@
+server:
+  port: 9000
+  servlet:
+    context-path: /consumer
+    
+#配置注册中心相关注解
+
+#配置微服务的项目名
+spring:
+  application:
+    #指定当前微服务的名称，便于以后通过微服务名称调用微服务时能够找到
+    name: consumer
+
+#配置注册中心地址，用来进行订阅服务
+eureka:
+  client:
+    service-url:
+      #配置当前微服务作为eureka客户端访问eureka服务端时使用的地址
+      defaultZone: http://localhost:7000/eureka/

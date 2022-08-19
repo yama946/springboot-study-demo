@@ -4,6 +4,7 @@ HELP.md
 ### IntelliJ IDEA ###
 .idea
 *.iws
+# 可以忽略任何文件夹下以.iml结尾的文件
 *.iml
 *.ipr
 

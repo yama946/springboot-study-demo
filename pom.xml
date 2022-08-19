@@ -76,28 +76,6 @@
                     <source>1.8</source>
                 </configuration>
             </plugin>
-            <!--maven构建过程相关配置-->
-            <plugin>
-                <!-- 如果只需要在ide中使用启动，不可以不配置此插件，此插件是保证可以使用命令行启动
-                这个插件将springboot项目打包成一个可执行的jar包
-                        存在此插件，可以通过java -jar xxx.jar，将打包后的可执行jar包运行起来。
-                 命令行执行启动：
-                    用途：在指定服务器上运行springboot应用
-                    第一步：打开cmd，或者终端工具
-                    第二步；进入工程目录(pom文件一级)，
-                    第三步：执行mvn packeage命令，将项目进行打包
-                    第四步；进入target目录
-                    第五步：执行java -jar xxx.jar命令，如果是已经打包好的，可以直接在同级目录下，执行此命令运行
-                        springboot项目。
-                -->
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <!--热部署配置-->
-                <configuration>
-                    <!--fork:如果没有该项配置,整个devtools不会起作用-->
-                    <fork>true</fork>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
