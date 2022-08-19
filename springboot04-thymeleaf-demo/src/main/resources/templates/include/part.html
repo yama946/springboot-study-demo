@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    声明代码片段，通过th:fragment进行指定唯一标识，在另一个页面通过th:insert、th:include、th:replace进行引用
+    <div th:fragment= "commonPart1">
+        <p>我是第一部分内容</p>
+    </div>
+    <div th:fragment= "commonPart2">
+        <p>第二部分内容是我</p>
+    </div>
+    <div th:fragment= "commonPart3">
+        <p>我是最后一部分内容，commonpart3</p>
+    </div>
+</html>

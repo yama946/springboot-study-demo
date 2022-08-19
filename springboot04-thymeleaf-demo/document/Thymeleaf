@@ -1,0 +1,102 @@
+Themeleaf与jsp之间的区别
+1、jsp文件使用浏览器进行直接打开，无法被浏览器直接渲染，无法看到直接的效果，但是thymeleaf是可以的，此时会直接忽略动态效果。
+
+Thymeleaf表达式语法
+1、名称空间
+使用Thymeleaf时，我们值及创建HTML文件即可，只是需要在html标签中加入Thymeleaf的名称空间
+
+2.配置方式
+###ThymeLeaf配置
+spring:
+  thymeleaf:
+    #模板的模式，支持 HTML, XML TEXT JAVASCRIPT
+    mode: HTML5
+    #编码 可不用配置
+    encoding: UTF-8
+    #内容类别,可不用配置
+    content-type: text/html
+    #开发配置为false,避免修改模板还要重启服务器
+    cache: false
+    #配置模板路径，默认是templates，可以不用配置
+    prefix: classpath:/templates
+    #配置后缀
+    surfix:.html
+
+3.常用表达式
+ ${．．．｝变量表达式。
+＊{．． ． ｝ 选择表达式。
+ ＃{．．．｝消息文字表达式。
+ ＠{} 链接url 表达式。
+ #maps 工具对象表达式。
+
+4.常用标签
+th:action 定义后台控制器路径。
+th:each 1,盾环语句。
+th:field 表单字段绑定。
+th:href 定义超链接。
+th:id div 标签中的ID 声明，类似HTML 标签中的归属性。
+th:if 条件判断语句。
+th:include 布局标签，替换内容到引入文件。。
+th:object 替换对象。th:src 图片类地址引入。
+th:text 显示文本
+th:value 属性赋值。
+th:style 替换css中style属性值，动态效果，经过服务器后显示。
+
+5、常用函数
+#dates 日期函数。
+#lists 列表函数。
+#arrays 数组函数。
+#strings 字符串函数。
+#numbers 幸生字函捷生。
+#calendars 日历函数。
+#objects 对象函数。
+#bools 逻辑函数
+6、thymeleaf语法
+        --加入名称空间--
+            <html xmlns:th="http://www.thmeleaf.org">
+        --修改标签的文本值
+            <h3>替换标签体</h3>
+            <p th:text="新值">原始值</p>
+        --修改指定的属性值
+            <h3>替换属性值</h3>
+            <input value="old-value" th:value="new-value" />
+        --在表达式中访问属性域
+            <h3>访问请求域</h3>
+            <p th:text="${reqAttrName}">aaa</p>
+        或者-----#httpServletRequest为隐含对象
+            <p th:text= "${#httpServletRequest.getAttribute('reqAttrName')}">这里注意给属性名添加引号</p>
+
+            <h3>访问session域</h3>
+            <p th:text= "${session.ssAttrName}">bbb</p>
+
+            <h3>访问application域</h3>
+            <p th:text= "${application.appAttrName}">ccc</p>
+
+解析URL地址
+<p th:text= "@{/aaa/bbb/ccc}">页面上看到的是：/contextpath/aaa/bbb/ccc </p>
+
+直接执行表达式，不用使用th标签
+其中第一个有转译效果，转译就是从域中取的值，如果有html标签会渲染显示
+<p>[(requestScope)]</p>
+没有转译效果
+<p>[[requestScope]]</p>
+
+
+条件判断：使用if条件判断
+<p th:if= "${not #strings.isEmpty(请求域键名)}"> if判断为真时，输出内容</p>
+<p th:if= "${#strings.isEmpty(请求域键名)}"> if判断为真时，输出内容</p>
+
+遍历集合--测试循环遍历
+使用th:each进行集合数据的迭代
+th:each= "声明变量:${集合}"
+th:each用在标签上，那个标签就会多次出现
+cardList表示集合，card表示集合内次遍历后存放到request域中的键值
+使用${card}进行获取每次遍历获得的值
+<div>
+    <p th:text= "${card}" th:each= "card:${cardList}" />
+</div>
+
+声明代码片段
+<div th:fragment= "commonPart">
+     <p>内部内容</p>
+</div>

@@ -1,0 +1,13 @@
+HELP.md
+*/target/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+#当前项目指定忽略文件
+*/application-dev.*
+
+

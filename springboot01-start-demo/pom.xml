@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!--    SpringBoot要求，项目要继承SpringBoot的起步依赖spring-boot-starter-parent-->
+    <!--
+    方式1：如果该项目是独立的不继承自定义父项目可以直接进行如下添加依赖。
+    方式2：可以直接在自定义父项目中以如下方式进行引入依赖
+    方式3：可以直接在父项目或者当前项目用方式3引入依赖。
+    -->
+    <!--方式1、2格式：<parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.1.RELEASE</version>
+    </parent>-->
+    <!--方式3格式：<dependencyManagement>
+        <dependencies>
+            &lt;!&ndash;spring cloud的依赖引入&ndash;&gt;
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>-->
+
+    <parent>
+        <artifactId>springboot-study-demo</artifactId>
+        <groupId>com.yama</groupId>
+        <version>1.0.0-RELEASE</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>springboot01-start-demo</artifactId>
+    <packaging>jar</packaging>
+
+
+
+    <dependencies>
+        <!-- web功能的起步依赖，负责整合所有有关web开发的依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--热部署配置：当类中进行修改，此时不需要重新启动，既可以看到效果
+        前提：idea使用时，需要打开自动编译功能，详细操作见文档-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+            <scope>true</scope>
+        </dependency>
+
+    </dependencies>
+
+
+
+</project>

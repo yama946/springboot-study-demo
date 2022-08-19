@@ -1,0 +1,66 @@
+#第一种： 普通数据的配置,键的冒号后规定必须空格，后添加值
+#字面量：数值，字符串,布尔类型
+#格式：键名：(空格) 键值
+name: yama
+age: 23
+judeg: true
+#日期类型赋值的默认格式
+dateTime: 2019/12/13
+
+#第二种：对象数据的配置，语法与map相同
+#yml配置文件，使用缩进空格数表示层级关系，相同层级为同一级别
+#格式1：
+#父键名：
+#空格1空格2 子键名1：(空格）键值
+#空格1空格2 子键名2：(空格)键值
+#空格1空格2 子键名3：
+#              空格1空格2 孙子键名：(空格) 键值
+#格式2：
+#父键名:(空格){子键名1:(空格)键值,子键名2:(空格)键值}
+person1:
+    name: yama
+    age: 23
+#或者
+#person2: {name: yama,age: 23,address: Hongkong,dateTime: 2021/12/13}
+person2: {name: yama,age: 23,address: Hongkong,dateTime: 2021-12-13 12:34:23}
+
+
+#第三种：集合、数组的配置方式
+# 普通字符串的集合list
+# 格式1：
+# 对象名(键名)：
+#    - (空格) 键值
+#    - (空格) 键值
+# 格式2：
+# 键名：(空格)[键值1，键值2，键值3]
+city1:
+  - beijing
+  - tianjin
+  - shanghai
+  - chongqing
+#或者
+city2: [beijing,tianjin,shanghai,chongqing]
+
+#集合中存放的是对象的集合---list
+#格式1：
+#对象名
+#   （对象1）
+#   -(空格)键名1：(空格)键值
+#   -(空格)键名2：(空格)键值
+#   （对象2）
+#   -(空格)键名1：(空格)键值
+#   -(空格)键名2：(空格)键值
+#格式2：
+#student2: [{name: yama,age: 23},{name: lining,age: 26}]
+student:
+  - name: zhangsan
+    age: 18
+    score: 100
+  - name: lisi
+    age: 28
+    score: 88
+  - name: wangwu
+    age: 38
+    score: 90
+#或者
+student2: [{name: yama,age: 23},{name: lining,age: 26}]

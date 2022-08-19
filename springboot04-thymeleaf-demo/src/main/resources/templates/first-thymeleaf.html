@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--添加thymeleaf的名称空间,命名空间就可以在HTML 文件中使用Thymeleaf 标签语言，用关键字“ th ” 来标注。-->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <h3>替换标签体</h3>
+
+        <!--服务器解析thymeleaf代码时，会读取th:text属性值，用这个值替换原来的标签体-->
+        <p th:text="经过服务器处理后可以看到的内容"> 直接在浏览器上打开时可以看到的内容 </p>
+
+        <h3>替换属性值</h3>
+        <input type="text" value="我是原始值，未经过服务器处理" th:value="我是进故宫服务器的值" />
+
+
+        --在表达式中访问属性域
+        <h3>访问请求域</h3>
+        <p th:text="${requestScope}">aaa</p>
+        或者
+        <p th:text= "${#httpServletRequest.getAttribute('requestScope')}">这里注意给属性名添加引号</p>
+
+        <h3>访问session域</h3>
+        <p>#表示获取对象</p>
+        <p th:text= "${#session.getAttribute('sessionScope')}">bbb</p>
+
+        <h3>访问application域</h3>
+        <p th:text= "${application.get('applicationScope')}">ccc</p>
+
+        <h3>解析URL地址</h3>
+        <!--@{}作用是将contextpath的值附加到指定的地址前，类似于jsp中给所有链接设置前置-->
+        <p th:text= "@{/aaa/bbb/ccc}">页面上看到的是：/contextpath/aaa/bbb/ccc </p>
+        <a href="../aaa/bbb/ccc" th:href="@{/aaa/bbb/ccc}">应用场景举例</a>
+
+        <h3>直接执行表达式，不用使用th标签</h3>
+        其中第一个有转译效果，转译就是从域中取的值，如果有html标签会渲染显示
+        <p>[(requestScope)]</p>
+        没有转译效果
+        <p>[[requestScope]]</p>
+
+        <h3>判断字符串是否为空</h3>
+        <p th:if= "${not #strings.isEmpty(requestScope)}"> if判断为真时，输出内容</p>
+        <p th:if= "${#strings.isEmpty(application.get('applicationScope'))}"> if判断为真时，输出内容</p>
+
+        <h3>遍历集合对象</h3>
+        th:each在那个标签上那个标签循环显示
+        <div>
+            <p th:text= "${card}" th:each= "card:${list}" />
+        </div>
+
+        <h3>引入代码片段</h3>
+        <!--"::"左边的值拼路径前后缀后，必须能够找到要包含的文件位置-->
+        <!--“::”右边的值是代码片段的唯一标志-->
+        <div th:include="~{include/part::commonPart1}"></div>
+        <div th:include="~{include/part::commonPart2}"></div>
+        <div th:replace="~{include/part::commonPart3}"></div>
+
+</body>
+</html>
+

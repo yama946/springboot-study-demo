@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!--    SpringBoot要求，项目要继承SpringBoot的起步依赖spring-boot-starter-parent-->
+    <!--将所有基于springboot开发的项目都需要继承此依赖，用来整合固定的东西，方便使用-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.1.RELEASE</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.yama</groupId>
+    <artifactId>springboot-study-demo</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0-RELEASE</version>
+
+    <modules>
+        <module>springboot01-start-demo</module>
+        <module>springboot03-mybatis-redis</module>
+        <module>springboot04-thymeleaf-demo</module>
+    </modules>
+
+    <properties>
+        <maven.complier.target>1.8</maven.complier.target>
+        <maven.complier.source>1.8</maven.complier.source>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <!--maven依赖就近原则的体现，如果使用传递以来与父类依赖
+            依赖管理相同，将使用较近的父类依赖中的依赖，导致没有明确的版本-->
+            <!--
+            &lt;!&ndash;使用依赖父类指定的版本约束&ndash;&gt;
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+            </dependency>
+            &lt;!&ndash;热部署&ndash;&gt;
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-devtools</artifactId>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <scope>test</scope>
+            </dependency>
+            &lt;!&ndash;配置thymeleaf的起步依赖&ndash;&gt;
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            </dependency>-->
+            <dependency>
+                <groupId>org.thymeleaf</groupId>
+                <artifactId>thymeleaf</artifactId>
+                <version>3.0.12.RELEASE</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+    <build>
+        <plugins>
+            <!--使用插件配置编译环境-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <target>1.8</target>
+                    <source>1.8</source>
+                </configuration>
+            </plugin>
+            <!--maven构建过程相关配置-->
+            <plugin>
+                <!-- 如果只需要在ide中使用启动，不可以不配置此插件，此插件是保证可以使用命令行启动
+                这个插件将springboot项目打包成一个可执行的jar包
+                        存在此插件，可以通过java -jar xxx.jar，将打包后的可执行jar包运行起来。
+                 命令行执行启动：
+                    用途：在指定服务器上运行springboot应用
+                    第一步：打开cmd，或者终端工具
+                    第二步；进入工程目录(pom文件一级)，
+                    第三步：执行mvn packeage命令，将项目进行打包
+                    第四步；进入target目录
+                    第五步：执行java -jar xxx.jar命令，如果是已经打包好的，可以直接在同级目录下，执行此命令运行
+                        springboot项目。
+                -->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <!--热部署配置-->
+                <configuration>
+                    <!--fork:如果没有该项配置,整个devtools不会起作用-->
+                    <fork>true</fork>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
