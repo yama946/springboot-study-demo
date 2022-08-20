@@ -1,0 +1,18 @@
+server:
+  port: 7010
+
+
+eureka:
+  instance:
+    #配置当前eureka服务主机地址
+    hostname: localhost
+  client:
+    # 自己就是注册中心，所以不需要“从注册中心取回信息”
+    fetchRegistry: false
+    
+    # 自己就是注册中心，所以自己不注册自己
+    register-with-eureka: false
+    
+    # 客户端访问Eureka 时使用的地址，${eureka.instance.hostname}获取当前配置文件中的信息
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/

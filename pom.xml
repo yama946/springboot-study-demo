@@ -21,6 +21,7 @@
         <module>springboot01-start-demo</module>
         <module>springboot03-mybatis-redis</module>
         <module>springboot04-thymeleaf-demo</module>
+        <module>springboot06-springcloud-feign-hystrix-zuul</module>
     </modules>
 
     <properties>

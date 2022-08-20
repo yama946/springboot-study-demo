@@ -1,0 +1,15 @@
+server:
+  port: 8010
+
+#配置项目名称，方便在注册中心查看
+spring:
+  application:
+    #指定当前微服务的名称，便于以后通过微服务名称调用微服务时能够找到
+    name: provider
+
+#配置注册中心位置
+eureka:
+  client:
+    service-url:
+      #配置当前微服务作为eureka客户端访问eureka服务端时使用的地址
+      defaultZone: http://localhost:7010/eureka/
