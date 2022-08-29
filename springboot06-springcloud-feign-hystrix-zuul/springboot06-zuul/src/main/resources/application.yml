@@ -1,0 +1,24 @@
+server:
+  port: 9999
+
+spring:
+  application:
+    name: zuul
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:7010/eureka/
+# 添加路由统一入口，我们可以使用路由访问微服务注册到同一注册中心中的。格式：http://路由IP:port/访问的微服务名/路径
+# 当然我们也可以直接访问微服务，不经过路由器
+
+# 通过以下配置会改变默认路由访问微服务方式。
+zuul:
+  routes:
+    employee: # 自定义路由规则的名称，在底层的数据结构中是Map的键
+      serviceId: atguigu-feign-consumer #目标微服务名称，ZuulRoute类型的一个属性
+      path: /zuul-emp/** # 用来代替目标微服务名称的路径 ，ZuulRoute类型的一个属性
+# /**表示匹配多层路径，如果没有加/**则不能匹配后续的多层路径了
+    

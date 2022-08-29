@@ -1,6 +1,7 @@
 package com.yama.springboot02initializrdemo.handler;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

@@ -76,7 +76,7 @@ th:style 替换css中style属性值，动态效果，经过服务器后显示。
 <p th:text= "@{/aaa/bbb/ccc}">页面上看到的是：/contextpath/aaa/bbb/ccc </p>
 
 直接执行表达式，不用使用th标签
-其中第一个有转译效果，转译就是从域中取的值，如果有html标签会渲染显示
+其中第一个有转译效果，转译:从域中取的值，如果有html标签会渲染显示
 <p>[(requestScope)]</p>
 没有转译效果
 <p>[[requestScope]]</p>

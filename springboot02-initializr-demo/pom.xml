@@ -99,6 +99,15 @@
                     <!--fork:如果没有该项配置,整个devtools不会起作用-->
                     <fork>true</fork>
                 </configuration>
+                <!--需要添加此配置，否则会出现无法找到主清单异常-->
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                            <goal>build-info</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

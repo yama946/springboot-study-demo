@@ -9,29 +9,18 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>springboot03-consumer</artifactId>
+    <artifactId>springboot06-zuul</artifactId>
+
     <dependencies>
-        <!--建立一个可以被访问的springboot项目-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.yama</groupId>
-            <artifactId>springboot01-common</artifactId>
-            <version>1.0.0-RELEASE</version>
-        </dependency>
-        <!--当前为模块为eureka注册中心客户端，添加依赖-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.fasterxml.jackson.dataformat</groupId>
-                    <artifactId>jackson-dataformat-xml</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
     </dependencies>
+
 
 </project>
